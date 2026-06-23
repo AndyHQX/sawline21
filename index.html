@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sawline 21</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <section id="menu" class="panel menu-panel">
+        <p class="eyebrow">2D card duel</p>
+        <h1>Sawline 21</h1>
+        <p class="lede">
+          Get closest to the target number, force the saw toward your opponent,
+          and use one-shot action cards to bend each round.
+        </p>
+
+        <label class="field">
+          Display name
+          <input id="nameInput" maxlength="18" autocomplete="nickname" placeholder="Player" />
+        </label>
+
+        <div class="menu-grid">
+          <button id="botBtn" class="primary">Offline Bot Mode</button>
+          <button id="hostBtn">Host Cloud Room</button>
+        </div>
+
+        <div class="join-row">
+          <input id="codeInput" maxlength="8" placeholder="ROOM CODE" />
+          <button id="joinBtn">Join</button>
+        </div>
+
+        <p class="small-note">
+          Multiplayer needs the Cloudflare Worker deployment. Bot mode runs fully in your browser.
+        </p>
+      </section>
+
+      <section id="game" class="game hidden" aria-live="polite">
+        <header class="topbar panel">
+          <div>
+            <p id="modeLabel" class="eyebrow">offline</p>
+            <h2 id="roomLabel">Sawline 21</h2>
+          </div>
+          <div class="top-actions">
+            <button id="copyCodeBtn" class="ghost hidden">Copy Code</button>
+            <button id="leaveBtn" class="ghost">Leave</button>
+          </div>
+        </header>
+
+        <section class="arena panel">
+          <canvas id="arenaCanvas" width="900" height="260" aria-label="Saw track"></canvas>
+          <div class="round-hud">
+            <span id="roundLabel">Round 1</span>
+            <span id="targetLabel">Target 21</span>
+            <span id="tallyLabel">Tally 1</span>
+          </div>
+          <p id="statusText" class="status">Ready.</p>
+        </section>
+
+        <section id="players" class="players"></section>
+
+        <section class="controls panel">
+          <div class="main-controls">
+            <button id="drawBtn" class="primary">Draw</button>
+            <button id="standBtn">Stand</button>
+            <button id="nextRoundBtn" class="hidden">Next Round</button>
+            <button id="restartBtn" class="hidden">Restart Duel</button>
+          </div>
+          <div id="actionCards" class="action-cards"></div>
+        </section>
+
+        <section class="panel log-panel">
+          <h3>Round Log</h3>
+          <ol id="logList"></ol>
+        </section>
+      </section>
+    </main>
+
+    <script src="./game.js"></script>
+  </body>
+</html>
